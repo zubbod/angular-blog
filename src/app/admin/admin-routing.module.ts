@@ -5,6 +5,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -22,15 +23,18 @@ const routes: Routes = [
       },
       {
         path: 'post/:id/edit',
-        component: EditPageComponent
+        component: EditPageComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'create',
-        component: CreatePageComponent
+        component: CreatePageComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'dashboard',
-        component: DashboardPageComponent
+        component: DashboardPageComponent,
+        canActivate: [AuthGuardService]
       }
     ]
   }
