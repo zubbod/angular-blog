@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces/i-user';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -14,13 +14,22 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup;
   user: IUser;
   isSubmitted = false;
+  message: string;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe((queryParams: Params) => {
+      if (queryParams.logout) {
+        this.message = 'Заполните форму авторизации'
+      }
+    });
+
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
@@ -38,7 +47,8 @@ export class LoginPageComponent implements OnInit {
       this.form.reset();
       this.router.navigate(['/admin', 'dashboard']);
       this.isSubmitted = false;
-    });
+    },
+    (error) => this.isSubmitted = false);
   }
 
 }
