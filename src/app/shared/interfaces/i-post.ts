@@ -3,5 +3,5 @@ export interface IPost {
   author: string;
   content: string;
   date: Date;
-  id?: number;
+  id?: string;
 }
