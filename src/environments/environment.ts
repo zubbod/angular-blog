@@ -7,6 +7,7 @@ import { IEnvironment } from './i-environment';
 export const environment: IEnvironment = {
   production: false,
   apiKey: 'AIzaSyCqh7LyTHbMcuQwVAEVpP0BpdrSdueZMXM',
+  apiUrl: 'https://training-angular-6625b.firebaseio.com/',
 };
 
 /*

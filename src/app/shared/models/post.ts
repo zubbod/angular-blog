@@ -1,7 +1,7 @@
 import { IPost } from '../interfaces/i-post';
 
 export class Post implements IPost {
-  id?: number;
+  id?: string;
   title: string;
   author: string;
   date: Date;
@@ -12,6 +12,6 @@ export class Post implements IPost {
     this.content = '';
     this.title = '';
     this.date = new Date();
-    this.id = null;
+    this.id = '';
   }
 }
