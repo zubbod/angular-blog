@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/modules/shared.module';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/modules/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
-import { AuthService } from './shared/services/auth.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 
 @NgModule({
@@ -27,7 +26,6 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
     SharedModule,
   ],
   providers: [
-    AuthService,
     AuthGuardService,
   ]
 })

@@ -1,12 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { IFireBaseLoginResponse } from '../../../shared/interfaces/i-fire-base-login-response';
 import { IUser } from '../../../shared/interfaces/i-user';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthService {
 
   error$: Subject<string> = new Subject<string>();
