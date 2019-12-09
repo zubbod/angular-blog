@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces/i-user';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -25,8 +25,11 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
 
     this.route.queryParams.subscribe((queryParams: Params) => {
-      if (queryParams.logout) {
+      if (queryParams['logout']) {
         this.message = 'Заполните форму авторизации'
+      }
+      if (queryParams['authfb']) {
+        this.message = 'Для публикации поста перелогиньтесь!'
       }
     });
 
