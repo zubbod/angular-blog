@@ -17,12 +17,30 @@ export class PostService {
   createPost(post: Post): Observable<any> {
     return this.http.post<IFbPostResponse>(`${environment.apiUrl}posts.json`, post).pipe(
       map((response: IFbPostResponse) => {
-        return<Post> {
+        return {
           ...post,
           id: response.name,
           date: new Date(post.date)
-        }
+        } as Post;
       })
     );
   }
+
+  getPosts(): Observable<Post[]> {
+    return this.http.get<{[key: string]: Post}>(`${environment.apiUrl}posts.json`).pipe(
+      map((response) => {
+        return Object.keys(response).map((key: string) => {
+          return {
+            ...response[key],
+            id: key,
+          };
+        });
+      })
+    );
+  }
+
+  removePost(id: string): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}posts/${id}.json`);
+  }
+ 
 }

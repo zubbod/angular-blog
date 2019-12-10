@@ -9,6 +9,7 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
+import { SearchPostPipe } from './shared/pipes/search-post.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
     EditPageComponent,
     LoginPageComponent,
     AdminLayoutComponent,
+    SearchPostPipe,
   ],
   imports: [
     CommonModule,

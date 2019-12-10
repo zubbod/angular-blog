@@ -10,7 +10,7 @@ import { PostService } from '../../shared/services/post.service';
 })
 export class CreatePageComponent implements OnInit {
 
-  form: FormGroup
+  form: FormGroup;
 
   constructor(
     private postService: PostService,
@@ -27,6 +27,7 @@ export class CreatePageComponent implements OnInit {
   submit() {
     let post = new Post();
     post = this.form.getRawValue();
+    post.date = new Date();
     this.postService.createPost(post).subscribe(() => {
       this.form.reset();
     });

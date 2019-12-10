@@ -1,1 +1,36 @@
-<p>dashboard-page works!</p>
+<div class="form-control">
+  <input type="text" 
+         placeholder="Найти пост..."
+         [(ngModel)]="searchString">
+</div>
+
+<ng-container *ngIf="posts.length; else loading">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Название</th>
+        <th>Автор</th>
+        <th>Дата</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts | searchPost:searchString; let i = index">
+        <td> {{ i + 1 }} </td>
+        <td> {{ post.title }} </td>
+        <td> {{ post.author }} </td>
+        <td> {{ post.date | date:'medium' }} </td>
+        <td>
+          <button class="btn btn-link open"
+                  [routerLink]="['/admin', 'post', post.id, 'edit']">Открыть</button>
+          <a (click)="removePost(post.id)">Удалить</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #loading>
+  <p class="text-center">Загрузка...</p>
+</ng-template>
