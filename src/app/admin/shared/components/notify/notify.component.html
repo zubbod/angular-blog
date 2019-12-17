@@ -1,0 +1,7 @@
+<div class="notify" *ngIf="notification" 
+     [ngClass]="{ 'warning': notification.type === NotifyEnum.Warning,
+                  'error': notification.type === NotifyEnum.Error,
+                  'success': notification.type === NotifyEnum.Success
+                }">
+  <p class="notify-message"> {{ notification.message }} </p>
+</div>

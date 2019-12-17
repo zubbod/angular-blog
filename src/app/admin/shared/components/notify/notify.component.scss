@@ -1,0 +1,25 @@
+.error {
+  background-color: rgb(219, 45, 45);
+}
+
+.success {
+  background-color: rgb(49, 218, 63);
+}
+
+.warning {
+  background-color: rgb(226, 210, 62);
+}
+
+.notify {
+  position: absolute;
+  top: 48px;
+  right: 48px;
+  display: block;
+  width: 240px;
+  padding: 8px 12px;
+
+  &-message {
+    text-align: center;
+    color: white;
+  }
+}

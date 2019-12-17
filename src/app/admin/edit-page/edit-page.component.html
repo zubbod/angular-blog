@@ -1,1 +1,31 @@
-<p>edit-page works!</p>
+<div *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <h2>Создать пост:</h2>
+  
+    <div class="form-control">
+      <label for="title">Заголовок статьи:</label>
+      <input type="text" id="title" formControlName="title">
+      <div class="validation">
+        <small *ngIf="form.get('title').hasError('required') && form.get('title').touched">Your e-mail is incorrect</small>
+      </div>
+    </div>
+  
+    <div class="form-control">
+      <label>Текст статьи:</label>
+      <quill-editor formControlName="content"></quill-editor>
+    </div>
+  
+    <button type="submit"
+            [disabled]="form.invalid || submitted"
+            class="btn btn-primary">
+      Изменить
+    </button>
+  
+  </form>
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+    <p class="text-center">Загрузка...</p>
+  </div>
+</ng-template>
