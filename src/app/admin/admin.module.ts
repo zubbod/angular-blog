@@ -10,6 +10,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { SearchPostPipe } from './shared/pipes/search-post.pipe';
+import { NotifyComponent } from './shared/components/notify/notify.component';
+import { NotifyService } from './shared/services/notify.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { SearchPostPipe } from './shared/pipes/search-post.pipe';
     LoginPageComponent,
     AdminLayoutComponent,
     SearchPostPipe,
+    NotifyComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +32,7 @@ import { SearchPostPipe } from './shared/pipes/search-post.pipe';
   ],
   providers: [
     AuthGuardService,
+    NotifyService,
   ]
 })
 

@@ -39,8 +39,24 @@ export class PostService {
     );
   }
 
+  getById(id: string): Observable<Post> {
+    return this.http.get(`${environment.apiUrl}posts/${id}.json`).pipe(
+      map((post: Post) => {
+        return {
+          ...post,
+          id,
+          date: new Date(post.date)
+        } as Post;
+      })
+    );
+  }
+
   removePost(id: string): Observable<any> {
     return this.http.delete(`${environment.apiUrl}posts/${id}.json`);
   }
- 
+
+  update(post: Post): Observable<Post> {
+    return this.http.patch<Post>(`${environment.apiUrl}posts/${post.id}.json`, post);
+  }
+
 }

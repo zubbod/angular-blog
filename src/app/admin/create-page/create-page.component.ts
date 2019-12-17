@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from '../../shared/models/post';
 import { PostService } from '../../shared/services/post.service';
+import { NotifyService } from '../shared/services/notify.service';
+import { NotifyEnum } from '../shared/enums/notify.enum';
 
 @Component({
   selector: 'app-create-page',
@@ -14,6 +16,7 @@ export class CreatePageComponent implements OnInit {
 
   constructor(
     private postService: PostService,
+    private notify: NotifyService,
   ) { }
 
   ngOnInit() {
@@ -29,6 +32,7 @@ export class CreatePageComponent implements OnInit {
     post = this.form.getRawValue();
     post.date = new Date();
     this.postService.createPost(post).subscribe(() => {
+      this.notify.show(NotifyEnum.Success, 'Пост создан успешно :)')
       this.form.reset();
     });
   }
