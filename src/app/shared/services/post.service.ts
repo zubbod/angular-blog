@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { IFbPostResponse } from '../interfaces/i-fb-post-response';
+import { IPost } from '../../interfaces/i-post.interface';
 
 @Injectable({providedIn: 'root'})
 
@@ -26,7 +27,7 @@ export class PostService {
     );
   }
 
-  getPosts(): Observable<Post[]> {
+  getPosts(): Observable<IPost[]> {
     return this.http.get<{[key: string]: Post}>(`${environment.apiUrl}posts.json`).pipe(
       map((response) => {
         return Object.keys(response).map((key: string) => {
