@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { QuillModule } from 'ngx-quill';
+// import { QuillModule } from 'ngx-quill';
 import { PostService } from '../services/post.service';
 
 @NgModule({
   declarations: [],
   imports: [
-    QuillModule.forRoot(),
+    // QuillModule.forRoot(),
   ],
   exports: [
-    QuillModule,
+    // QuillModule,
   ],
   providers: [
     PostService,

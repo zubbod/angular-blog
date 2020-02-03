@@ -22,12 +22,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     private notify: NotifyService
   ) { }
 
-  ngOnInit() {
-    this.postService.getPosts()
-      .pipe(
-        takeUntil(this.unsubscribe)
-      )
-      .subscribe((response: Post[]) => this.posts = response);
+  async ngOnInit() {
+    await this.postService.getPosts().then((response: Post[]) => this.posts = response);
   }
 
   ngOnDestroy() {

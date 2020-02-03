@@ -1,0 +1,16 @@
+.wrapper {
+  padding: 1rem 5rem;
+
+  p-autocomplete {
+    width: 100%;
+
+
+    &::ng-deep .ui-autocomplete {
+      width: 100% !important;
+    }
+  }
+
+  .btn {
+    margin-top: 24px;
+  }
+}

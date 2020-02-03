@@ -26,7 +26,7 @@ export class PostService {
     );
   }
 
-  getPosts(): Observable<Post[]> {
+  getPosts(): Promise<Post[]> {
     return this.http.get<{[key: string]: Post}>(`${environment.apiUrl}posts.json`).pipe(
       map((response) => {
         return Object.keys(response).map((key: string) => {
@@ -36,10 +36,10 @@ export class PostService {
           };
         });
       })
-    );
+    ).toPromise();
   }
 
-  getById(id: string): Observable<Post> {
+  getById(id: string): Promise<Post> {
     return this.http.get(`${environment.apiUrl}posts/${id}.json`).pipe(
       map((post: Post) => {
         return {
@@ -48,7 +48,7 @@ export class PostService {
           date: new Date(post.date)
         } as Post;
       })
-    );
+    ).toPromise();
   }
 
   removePost(id: string): Observable<any> {

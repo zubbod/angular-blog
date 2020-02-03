@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <p-autoComplete [(ngModel)]="def" [suggestions]="results" (completeMethod)="search($event)">
+    <ng-template let-res pTemplate="item" field="value">
+      <span>{{res.value}}, {{res.inn}}</span>
+    </ng-template>
+  </p-autoComplete>
+
+  <button class="btn btn-secondary" (click)="changeValue()" >Change value</button>
+</div>
+

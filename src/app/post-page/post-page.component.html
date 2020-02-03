@@ -1,27 +1,18 @@
-<div class="post">
+<div class="post" *ngIf="post; else loading">
   <div class="header">
-    <h1>Post title</h1>
+    <h1>{{post.title}}</h1>
 
     <button class="btn btn-link" [routerLink]="['/']">На главную</button>
   </div>
   <div class="info">
-    <strong>тут автор</strong>
-    <small>21.09.2019</small>
+    <strong>{{post.author}}</strong>
+    <small>{{post.date | date}}</small>
   </div>
 
   <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias numquam totam, cupiditate,
-      expedita sunt molestiae corporis quae, magni aspernatur labore iure nostrum fugit ad accusamus
-      quo? Beatae iure omnis labore libero? Iste eum itaque aut, distinctio ipsam dignissimos
-      pariatur, fugiat earum hic nesciunt sequi eos. Aspernatur, animi harum? Temporibus possimus
-      maxime omnis deserunt. Sapiente cupiditate eum minus. Consequuntur quis, cumque sit
-      dignissimos obcaecati voluptate corrupti rerum sed consequatur eum provident rem sapiente
-      magni repellat eaque, minima iure adipisci dicta in debitis ipsum? Pariatur a qui et nostrum,
-      sint ullam at exercitationem atque debitis quasi non eveniet eaque officia praesentium libero
-      culpa iusto accusantium tempora illum necessitatibus distinctio maxime fuga iste! Molestias
-      nisi accusamus exercitationem fugiat adipisci id itaque reprehenderit repellendus nesciunt
-      dolorem nemo ipsam minima explicabo nam placeat, maxime accusantium sapiente deserunt
-      voluptatem atque ut nulla. Rem ducimus voluptatum commodi laudantium. Quaerat neque voluptas
-      nihil dolor harum delectus nam iste.</p>
+  <quill-view-html [content]="post.content"></quill-view-html>
   </div>
 </div>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
